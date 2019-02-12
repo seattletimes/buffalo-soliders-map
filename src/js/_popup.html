@@ -1,25 +1,26 @@
 <div class="popuptext">
+  <div class="close">X</div>
+  <div class="descript">
+  <div class="title">{{title}}</div></div>
+  <div class="descript">{{text}}</div>
+  {{#link}}
+    <div class="descript"><span class="note"><a href="{{link}}">Read more here</a>
+  {{/link}}
+  {{#link2}}and <a href="{{link2}}">here</a></span></div>
+  {{/link2}}
 
-<!-- class types for popup - descript, note, address, emphasis, popup-img, credit -->
+  {{#photourl}}
+    <div class="popup-img">
+        <img src="{{photourl}}" alt="photo" height="auto" width="100%">
+      </div>
+  {{/photourl}}
+  <!-- <div class="descript" style="text-transform:uppercase">Listing price:<span class="emphasis"> <br>${{price2}}</span></div> -->
 
-<!--   {{#image}}
-    <video autoplay loop class="popup-img">
-      <source src="{{image}}" type="video/mp4">Your browser does not support the video tag.
-    </video>
-    <div class="credit">Corinne Chin / The Seattle Times</div>
-  {{/image}}
- -->
-  <h2 class="bigheader">{{name}}</h2>
-
-  <div class="address">{{address}}</div>
-
-  {{#description}}
-    <div class="descript">{{description}}</div>
-  {{/description}} 
-
-<!--   {{#link}}
-    <div class="note"><a href="{{link}}" target="_blank"><em>(Source)</em></a></div>
-  {{/link}} -->
+  <div class="descript"><span class="note">{{caption}}</span></div>
 
 
+<!-- {{#listingurl}}
+<a class="link" href="{{listingurl}}" target="_blank">Link to listing</a> -->
+<!-- {{/listingurl}} -->
+<div class="clear"></div>
 </div>

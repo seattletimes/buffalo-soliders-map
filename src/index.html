@@ -7,76 +7,78 @@
   </title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <!-- Safari, you're the worst -->
-  <meta name='format-detection' content='telephone=no'>
   <link rel="stylesheet" type="text/css" href="style.css">
-  <%= t.include("partials/_head.html") %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <% /*= t.include("partials/_adHead.html") */ %>
+
+    <!-- typekit fonts -->
+    <script>
+      (function(d) {
+        var config = {
+            kitId: 'rvq5yyp',
+            scriptTimeout: 3000
+          },
+          h = d.documentElement,
+          t = setTimeout(function() {
+            h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+          }, config.scriptTimeout),
+          tk = d.createElement("script"),
+          f = false,
+          s = d.getElementsByTagName("script")[0],
+          a;
+        h.className += " wf-loading";
+        tk.src = '//use.typekit.net/' + config.kitId + '.js';
+        tk.async = true;
+        tk.onload = tk.onreadystatechange = function() {
+          a = this.readyState;
+          if (f || a && a != "complete" && a != "loaded") return;
+          f = true;
+          clearTimeout(t);
+          try {
+            Typekit.load(config)
+          } catch (e) {}
+        };
+        s.parentNode.insertBefore(tk, s)
+      })(document);
+    </script>
 </head>
 
 <body>
 
   <responsive-child class="map-container">
     <div class="outmost">
-      <section class="chatter">
-        <h1>Lorem Ipsum</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat aliquam lectus vitae porttitor. Donec euismod sem dui, ac gravida sem mattis sed. Fusce porttitor accumsan sem elementum convallis. Nam id augue lobortis, laoreet magna non,
-          sodales risus. </p>
-      </section>
-
-      <div class="aspect-ratio-outer">
-        <div class="aspect-ratio-inner">
-
-          <leaflet-map zoom=10>
-            <tile-layer layer="cartoPositron"></tile-layer>
-            <geo-json>
-              <geo-data>
-                <%= t.include("states.geo.json") %>
-              </geo-data>
-              <geo-style>{ "weight": 1, "color": "#000", "opacity":0.1 }</geo-style>
-              <geo-palette property="CENSUSAREA">
-                <color-mapping max=10000 color="purple"></color-mapping>
-                <color-mapping min=10001 max=50000 color="blue"></color-mapping>
-                <color-mapping min=50001 max=100000 color="green"></color-mapping>
-                <color-mapping min=100001 max=200000 color="yellow"></color-mapping>
-                <color-mapping min=200001 color="orange"></color-mapping>
-              </geo-palette>
-              <geo-popup>
-                <h1 class="bigheader">{{NAME}}</h1>
-                <ul>
-                  <li> Size: {{CENSUSAREA}}
-                    <li> State ID: {{STATE}}
-                      <li> Geo ID: {{GEO_ID}}
-                </ul>
-              </geo-popup>
-            </geo-json>
-          </leaflet-map>
-
+      <div class="map-area">
+        <div class="area2">
+          <section class="chatter">
+            <h1>The history of the Buffalo Soldiers in the Pacific Northwest</h1>
+            <p>The buffalo soldiers are best known through stories of their battles in the West, but the buffalo soldiers service with the armed forces also extended to many places throughout the Pacific Northwest.</p>
+          </section>
+            <div class="buttons">
+              <div class="goto back disabled"><i class="fa fa-chevron-left"></i> Previous</div>
+                <div class="goto next">Next <i class="fa fa-chevron-right"></i></div>
+            </div>
+          <div class="pop-container"><div class="introtext">Select a point on the map for information about each location, or select the "Next" button to see them in order of North to South.</div></div>
         </div>
-        <aside class="legend">
-          <h1>Map legend</h1>
-          <ul class="scale">
-            <li>
-              <span class="block" style="background-color: red"></span> Cherry</li>
-            <li>
-              <span class="block" style="background-color: orange"></span> Orange</li>
-            <li>
-              <span class="block" style="background-color: yellow"></span> Lemon</li>
-            <li>
-              <span class="block" style="background-color: green"></span> Lime</li>
-            <li>
-              <span class="block" style="background-color: blue"></span> Blueberry</li>
-          </ul>
-        </aside>
+          <div class="area1">
+            <div class="aspect-ratio-outer">
+              <div class="aspect-ratio-inner">
+                <leaflet-map zoom=11>
+                  <tile-layer layer="cartoPositron"></tile-layer>
+                </leaflet-map>
+              </div>
+            </div>
+          </div>
       </div>
-
-
-      <div class="source">Source: Name of source
-        <span class="credit">XXX XXX / THE SEATTLE TIMES</div>
+        <div class="source">Sources: XXX<br>
+          <div class="credit">EMILY M. ENG / THE SEATTLE TIMES</div>
+        </div>
+          <div class="clear"></div>
     </div>
+      <div class="clear"></div>
   </responsive-child>
 
   <script src="app.js"></script>
-  <% /*= t.include("partials/_foot.html"); */ %>
+  <% /*= t.include("partials/_adFoot.html"); */ %>
     <%= t.include("partials/_workHere.html") %>
 </body>
 
